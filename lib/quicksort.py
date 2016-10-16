@@ -2,7 +2,7 @@ def quicksort(a):
     pivot = len(a) - 1
     wall = 0
     left, middle, right = [], [], []
-    for i, e in enumerate(a[wall:pivot+1]):
+    for e in a[wall:pivot+1]:
         if a[pivot] > e:
             left.append(e)
             wall += 1
