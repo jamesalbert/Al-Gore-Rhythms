@@ -35,16 +35,3 @@ def heapify(a, i, heapsize):
         # Swap and tail-recursion
         a[i], a[largest] = a[largest], a[i]
         heapify(a, largest, heapsize)
-
-def main():
-    a = []
-
-    for x in range(0,10):
-        a.append(random.randint(1,100))
-
-    print('Random array:\n\t', a)
-    heapsort(a)
-    print('\nAfter heapsort:\n\t', a)
-
-if __name__ == "__main__":
-    main()
