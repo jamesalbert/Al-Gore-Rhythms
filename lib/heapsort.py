@@ -1,31 +1,30 @@
-from math import floor
+import random
 
-heapsize = 0
-largest = 0
+def heaplen(a):
+    return len(a) - 1
+
+def leftchild(i):
+    return 2 * i + 1
+
+def rightchild(i):
+    return 2 * i + 2
 
 def heapsort(a):
-    global heapsize
-    a = buildheap(a)
-    for i in range(len(a)-1, 1, -1):
-        tmp = a[i]
-        a[i] = a[0]
-        a[0] = tmp
+    buildheap(a)
+    heapsize = heaplen(a)
+    for i in range(heapsize, -1, -1):
+        a[0], a[i] = a[i], a[0]
         heapsize -= 1
-        a = heapify(a, 1)
-    print(a)
-    return a
+        heapify(a, 0, heapsize)
 
 def buildheap(a):
-    global heapsize
-    heapsize = len(a) - 1
-    for i in range(floor(heapsize/2), 0, -1):
-        a = heapify(a, i)
-    return a
+    heapsize = heaplen(a)
+    for i in range(heapsize//2, -1, -1):
+        heapify(a, i, heapsize)
 
-def heapify(a, i):
-    global heapsize
-    left = 2 * i + 1
-    right = 2 * i + 2
+def heapify(a, i, heapsize):
+    left = leftchild(i)
+    right = rightchild(i)
     if left <= heapsize and a[left] > a[i]:
         largest = left
     else:
@@ -33,8 +32,19 @@ def heapify(a, i):
     if right <= heapsize and a[right] > a[largest]:
         largest = right
     if largest != i:
-        tmp = a[i]
-        a[i] = a[largest]
-        a[largest] = tmp
-        a = heapify(a, largest)
-    return a
+        # Swap and tail-recursion
+        a[i], a[largest] = a[largest], a[i]
+        heapify(a, largest, heapsize)
+
+def main():
+    a = []
+
+    for x in range(0,10):
+        a.append(random.randint(1,100))
+
+    print('Random array:\n\t', a)
+    heapsort(a)
+    print('\nAfter heapsort:\n\t', a)
+
+if __name__ == "__main__":
+    main()
