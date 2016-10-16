@@ -1,5 +1,5 @@
 from random import sample
-from sorting import mergesort, quicksort
+from sorting import mergesort, quicksort, heapsort
 from time import clock
 
 
