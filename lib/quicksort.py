@@ -1,7 +1,5 @@
-from random import randint
-
 def quicksort(a):
-    pivot = randint(0, len(a)-1)
+    pivot = len(a) - 1
     wall = 0
     left, middle, right = [], [], []
     for e in a[wall:pivot+1]:
