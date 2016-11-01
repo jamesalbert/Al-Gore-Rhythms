@@ -2,9 +2,23 @@
  Graphing Utilities
 '''
 
-from .components import Vertex
+from .components import Vertex, Graph
+
 
 infinity = 10000000
+
+def get_topological_order(graph):
+    order = list()
+    graph_bk = read_datamap(graph.datamap, directed=True)
+    vertices = graph_bk.get_vertices()
+    while len(order) < len(vertices):
+        for vertex in vertices:
+            if vertex.name in order:
+                continue
+            if not vertex.has_incoming_edges():
+                order.append(vertex.name)
+                graph_bk.remove_vertex(vertex)
+    return order
 
 def rollout(datamap):
     '''
@@ -20,15 +34,15 @@ def read_datamap(datamap, directed=False):
     '''
      constructs a map of vectors and associated edges from a datamap
     '''
-    graph = {}
+    graph = Graph(datamap, directed)
     edges = rollout(datamap)
     for edge in edges:
         src, dest, weight = edge
         if src not in graph:
-            graph[src] = Vertex(src)
+            graph.add_vertex(src)
         if dest not in graph:
-            graph[dest] = Vertex(dest)
+            graph.add_vertex(dest)
         if not directed:
-            graph[dest].add_node(graph[src], weight)
-        graph[src].add_node(graph[dest], weight)
+            graph.add_edge(dest, src, weight)
+        graph.add_edge(src, dest, weight)
     return graph

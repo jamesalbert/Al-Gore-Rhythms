@@ -10,7 +10,7 @@ class PathFinder(object):
         self.graph = graph
         self.v = v
         self.D = {v: 0}
-        for vertex in self.graph.keys():
+        for vertex in self.graph:
             if self.v == vertex:
                 continue
             self.D[vertex] = infinity

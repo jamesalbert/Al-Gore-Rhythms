@@ -32,6 +32,8 @@ datamap = {
 # visual.draw(datamap)
 undirected = utils.read_datamap(datamap)
 directed = utils.read_datamap(datamap, directed=True)
+topological_order = utils.get_topological_order(directed)
+print('topological order: {0}'.format(topological_order))
 d = Dijkstra(undirected, 'a')
 b = BellmanFord(directed, 'a')
 du = d.find_path()

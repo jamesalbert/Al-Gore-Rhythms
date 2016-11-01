@@ -7,7 +7,7 @@ from .paths import PathFinder
 
 class Dijkstra(PathFinder):
     def find_path(self):
-        q = list(self.graph.keys())
+        q = self.graph.get_vertice_names()
         while q:
             src = min(q, key=self.D.get)
             q.pop(q.index(src))
