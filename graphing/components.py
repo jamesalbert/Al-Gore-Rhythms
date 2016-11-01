@@ -17,7 +17,7 @@ class Graph(MutableMapping):
         return list(self.graph.values())
 
     def get_vertice_names(self):
-        return list(self.graph.keys())
+        return sorted(list(self.graph.keys()))
 
     def add_vertex(self, name):
         self[name] = Vertex(name)

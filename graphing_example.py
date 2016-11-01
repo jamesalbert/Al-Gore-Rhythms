@@ -1,4 +1,4 @@
-from graphing import utils, visual, Dijkstra, BellmanFord
+from graphing import utils, visual, Dijkstra, BellmanFord, DAG, FloydWarshall
 
 datamap = {
     'a': {
@@ -36,8 +36,10 @@ topological_order = utils.get_topological_order(directed)
 print('topological order: {0}'.format(topological_order))
 d = Dijkstra(undirected, 'a')
 b = BellmanFord(directed, 'a')
-du = d.find_path()
-bu = b.find_path()
+dag = DAG(directed, 'a')
+fw = FloydWarshall(directed)
 # print shortest paths from node 'a' to every other node
-print(du)
-print(bu)
+print('Dijkstra:\n{0}'.format(d.find_path()))
+print('Bellman-Ford:\n{0}'.format(b.find_path()))
+print('Directed Acyclic Graph:\n{0}'.format(dag.find_path()))
+print('Floyd-Warshall:\n{0}'.format(fw.find_path()))

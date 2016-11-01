@@ -2,10 +2,10 @@
  Dijkstra Shortest Path Finder
 '''
 
-from .paths import PathFinder
+from .paths import SingleSource
 
 
-class Dijkstra(PathFinder):
+class Dijkstra(SingleSource):
     def find_path(self):
         q = self.graph.get_vertice_names()
         while q:
