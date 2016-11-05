@@ -1,13 +1,16 @@
-import random
+
 
 def heaplen(a):
     return len(a) - 1
 
+
 def leftchild(i):
     return 2 * i + 1
 
+
 def rightchild(i):
     return 2 * i + 2
+
 
 def heapsort(a):
     buildheap(a)
@@ -17,10 +20,12 @@ def heapsort(a):
         heapsize -= 1
         heapify(a, 0, heapsize)
 
+
 def buildheap(a):
     heapsize = heaplen(a)
     for i in range(heapsize//2, -1, -1):
         heapify(a, i, heapsize)
+
 
 def heapify(a, i, heapsize):
     left = leftchild(i)

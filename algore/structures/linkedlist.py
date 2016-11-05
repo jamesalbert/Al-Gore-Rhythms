@@ -1,16 +1,48 @@
+from .components import Node
 
-class Node(object):
-    def __init__(self, value=None, next=None, prev=None, root=None):
-        self.value = value
-        self.next = self if root else next
-        self.prev = self if root else prev
 
-class DoublyLinkedList(object):
+class LinkedList(object):
     def __init__(self):
-        self.root = Node(root=True)
+        self.root = Node()
         self.iter = self.root
         self.tail = None
         self.len = 0
+
+    def insert(self, item):
+        raise NotImplementedError
+
+    def pop(self, index=0):
+        raise NotImplementedError
+
+    def reverse(self):
+        raise NotImplementedError
+
+    def printf(self, node):
+        if node is self.tail:
+            return str(node.value)
+        return ','.join([str(node.value), self.printf(node.next)])
+
+    def __str__(self):
+        return '[{0}]'.format(self.printf(self.root))
+
+    def __len__(self):
+        return self.len
+
+    def __getitem__(self, index):
+        if index >= len(self):
+            raise IndexError('index {0} out of range'.format(index))
+        for i in range(index):
+            self.iter = self.iter.next
+        item = self.iter.value
+        self.iter = self.root
+        return item
+
+
+class CircularDoublyLinkedList(LinkedList):
+    def __init__(self):
+        super().__init__()
+        self.root = Node(circular=True)
+        self.iter = self.root
 
     def insert(self, item):
         if not self.tail:
@@ -48,7 +80,7 @@ class DoublyLinkedList(object):
         return node.value
 
     def reverse(self):
-        ll = DoublyLinkedList()
+        ll = CircularDoublyLinkedList()
         if len(self) is 0:
             return ll
         node = self.tail
@@ -58,23 +90,3 @@ class DoublyLinkedList(object):
             if len(ll) == len(self):
                 break
         return ll
-
-    def printf(self, node):
-        if node.value == self.tail.value:
-            return str(node.value)
-        return ','.join([str(node.value), self.printf(node.next)])
-
-    def __str__(self):
-        return '[{0}]'.format(self.printf(self.root))
-
-    def __len__(self):
-        return self.len
-
-    def __getitem__(self, index):
-        if index >= len(self):
-            raise IndexError('index {0} out of range'.format(index))
-        for i in range(index):
-            self.iter = self.iter.next
-        item = self.iter.value
-        self.iter = self.root
-        return item

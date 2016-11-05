@@ -1,5 +1,6 @@
 
-from heapq import heappush, heappop
+from heapq import heappop
+
 
 class FibonacciHeap(object):
     def __init__(self):
@@ -11,5 +12,5 @@ class FibonacciHeap(object):
 
     def link(self, x, y):
         heappop(self.h, x)
-        i  = self.h.index(y)
+        i = self.h.index(y)
         self.h.insert(2*i+2, x)

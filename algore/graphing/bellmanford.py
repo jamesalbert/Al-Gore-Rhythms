@@ -8,7 +8,7 @@ from .paths import SingleSource
 
 class BellmanFord(SingleSource):
     def find_path(self, q=None):
-        if q == None:
+        if q is None:
             q = [self.source]
         for src in q:
             for dest, edge in self.graph[src].edges.items():

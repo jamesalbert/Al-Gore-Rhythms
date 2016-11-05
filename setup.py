@@ -21,5 +21,8 @@ setup(name='Al-Gore-Rhythms',
                         'pyparsing',
                         'six'],
       setup_requires=['pytest-runner'],
-      tests_require=['pytest', 'pytest-cov']
-)
+      tests_require=['pytest',
+                     'pytest-cov',
+                     'pytest-pep8',
+                     'pytest-flakes',
+                     'pyflakes'])

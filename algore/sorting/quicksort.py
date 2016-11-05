@@ -15,5 +15,3 @@ def quicksort(a):
     if right:
         right = quicksort(right)
     return left + middle + right
-
-

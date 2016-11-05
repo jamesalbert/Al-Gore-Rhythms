@@ -5,7 +5,6 @@
 from .paths import MinimumSpanning
 
 
-
 class Kruskal(MinimumSpanning):
     def get_path(self, t, current=None):
         current = current or self.source
@@ -13,8 +12,7 @@ class Kruskal(MinimumSpanning):
             return str()
         vertex = self.graph[current]
         edges = [edge for edge in vertex.edges.values() if edge in t]
-        sort = lambda edge: edge.weight
-        current = min(edges, key=sort).destination.name
+        current = min(edges, key=lambda edge: edge.weight).destination.name
         return current + self.get_path(t, current)
 
     def find_path(self):
