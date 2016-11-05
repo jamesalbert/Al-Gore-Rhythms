@@ -51,7 +51,7 @@ class DoublyLinkedList(object):
         return node
 
     def reverse(self):
-        ll = LinkedList()
+        ll = DoublyLinkedList()
         node = self.tail
         while True:
             ll.insert(node.value)

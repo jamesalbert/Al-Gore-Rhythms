@@ -1,7 +1,7 @@
 #from graphing import FibonacciHeap
 from algore.structures import DoublyLinkedList
 
-ll = LinkedList()
+ll = DoublyLinkedList()
 ll.insert('a')
 ll.insert('c')
 ll.insert('b')
