@@ -19,6 +19,19 @@ class Graph(MutableMapping):
     def get_vertice_names(self):
         return sorted(list(self.graph.keys()))
 
+    def get_edges(self):
+        edges = {}
+        for vertex in self.get_vertices():
+            src = vertex.name
+
+            edges = {
+                **edges, **{
+                    '{0}_{1}'.format(src, dest): edge
+                    for dest, edge in vertex.edges.items()
+                }
+            }
+        return edges
+
     def add_vertex(self, name):
         self[name] = Vertex(name)
         return self

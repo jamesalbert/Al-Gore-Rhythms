@@ -1,5 +1,12 @@
-from graphing import utils, visual, Dijkstra, BellmanFord, DAG, FloydWarshall
-
+from graphing import (
+    utils,
+    visual,
+    DAG,
+    Dijkstra,
+    BellmanFord,
+    FloydWarshall,
+    Kruskal
+)
 datamap = {
     'a': {
         'b': 10,
@@ -29,7 +36,7 @@ datamap = {
     'g': {}
 }
 
-# visual.draw(datamap)
+#visual.draw(datamap)
 undirected = utils.read_datamap(datamap)
 directed = utils.read_datamap(datamap, directed=True)
 topological_order = utils.get_topological_order(directed)
@@ -38,8 +45,10 @@ d = Dijkstra(undirected, 'a')
 b = BellmanFord(directed, 'a')
 dag = DAG(directed, 'a')
 fw = FloydWarshall(directed)
+k = Kruskal(directed, 'a', 'g')
 # print shortest paths from node 'a' to every other node
 print('Dijkstra:\n{0}'.format(d.find_path()))
 print('Bellman-Ford:\n{0}'.format(b.find_path()))
 print('Directed Acyclic Graph:\n{0}'.format(dag.find_path()))
 print('Floyd-Warshall:\n{0}'.format(fw.find_path()))
+print('Kruskal:\n{0}'.format(k.find_path()))

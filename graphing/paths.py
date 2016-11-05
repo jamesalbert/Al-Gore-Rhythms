@@ -7,9 +7,9 @@ class AbstractPath(object):
     '''
      Abstract base class for shortest path finders
     '''
-    def __init__(self, graph, v):
+    def __init__(self, graph, source):
         self.graph = graph
-        self.v = v
+        self.source = source
 
     def find_path(self):
         raise NotImplementedError
@@ -18,14 +18,22 @@ class SingleSource(AbstractPath):
     '''
      Subclass for single-source shortest path finders
     '''
-    def __init__(self, graph, v):
-        super().__init__(graph, v)
-        self.D = {v: 0}
+    def __init__(self, graph, source):
+        super().__init__(graph, source)
+        self.D = {source: 0}
         for vertex in self.graph:
-            if self.v == vertex:
+            if self.source == vertex:
                 continue
             self.D[vertex] = infinity
 
+
+class MinimumSpanning(AbstractPath):
+    '''
+     Subclass for minimum spanning trees
+    '''
+    def __init__(self, graph, source, destination):
+        super().__init__(graph, source)
+        self.destination = destination
 
 class AllPairs(AbstractPath):
     '''

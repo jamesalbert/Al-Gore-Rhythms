@@ -10,11 +10,13 @@ def draw(datamap):
     for edge in edges:
         src, dest, weight = edge
         g.add_edge(src, dest, weight=weight)
-    pos = nx.spring_layout(g)
-    edge_labels=dict([((u,v,),'{0}-{1}'.format(u, v))
+    pos = nx.circular_layout(g)
+    #edge_labels=dict([((u,v,),'{0}-{2}-{1}'.format(u, v, d['weight']))
+    #                 for u,v,d in g.edges(data=True)])
+    edge_labels=dict([((u,v,),d['weight'])
                      for u,v,d in g.edges(data=True)])
     node_labels = {node:node for node in g.nodes()}
     nx.draw_networkx_labels(g, pos, labels=node_labels)
     nx.draw_networkx_edge_labels(g,pos,edge_labels=edge_labels)
-    nx.draw(g, pos, node_size=1, edge_cmap=plt.cm.Reds)
+    nx.draw(g, pos, node_size=500, edge_cmap=plt.cm.Reds)
     pylab.show()
