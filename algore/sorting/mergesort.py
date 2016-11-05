@@ -1,3 +1,5 @@
+
+
 def merge(a, b):
     to_return = []
     while True:
@@ -8,6 +10,7 @@ def merge(a, b):
         (a if to_return[-1] == a[0] else b).pop(0)
     return to_return
 
+
 def mergesort(c):
     i = int(len(c)/2)
     d, e = c[:i], c[i:]
@@ -16,4 +19,3 @@ def mergesort(c):
     if (len(e) >= 2):
         e = mergesort(e)
     return merge(d, e)
-

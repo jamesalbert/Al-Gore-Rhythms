@@ -14,6 +14,7 @@ class AbstractPath(object):
     def find_path(self):
         raise NotImplementedError
 
+
 class SingleSource(AbstractPath):
     '''
      Subclass for single-source shortest path finders
@@ -34,6 +35,7 @@ class MinimumSpanning(AbstractPath):
     def __init__(self, graph, source, destination):
         super().__init__(graph, source)
         self.destination = destination
+
 
 class AllPairs(AbstractPath):
     '''

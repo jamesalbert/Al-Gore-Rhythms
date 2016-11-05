@@ -3,7 +3,7 @@
 '''
 
 from collections import MutableMapping
-from copy import copy, deepcopy
+from copy import copy
 from itertools import zip_longest
 
 

@@ -2,10 +2,11 @@
  Graphing Utilities
 '''
 
-from .components import Vertex, Graph
+from .components import Graph
 
 
 infinity = 10000000
+
 
 def get_topological_order(graph):
     order = list()
@@ -20,6 +21,7 @@ def get_topological_order(graph):
                 graph_bk.remove_vertex(vertex)
     return order
 
+
 def rollout(datamap):
     '''
      converts datamap ( {'a': {'b': 12}} ) to [ ['a', 'b', 12] ]
@@ -29,6 +31,7 @@ def rollout(datamap):
         for dest, weight in edges.items():
             digraph.append([src, dest, weight])
     return digraph
+
 
 def read_datamap(datamap, directed=False):
     '''
