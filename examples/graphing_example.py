@@ -1,4 +1,4 @@
-from graphing import (
+from algore.graphing import (
     utils,
     visual,
     DAG,

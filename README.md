@@ -6,10 +6,11 @@
 ### INSTALL
 
 ```
-virtualenv venv
 git clone https://github.com/jamesalbert/Al-Gore-Rhythms
-python setup.py install
+cd Al-Gore-Rhythms
+virtualenv venv
+pip install .
 # check to see if it installed correctly
 python
->>> from algore.graphing import Dijkstra
+# >>> from algore.graphing import Dijkstra
 ```

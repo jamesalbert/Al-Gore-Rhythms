@@ -1,5 +1,5 @@
 #from graphing import FibonacciHeap
-from structures import LinkedList
+from algore.structures import LinkedList
 
 ll = LinkedList()
 ll.insert('a')
