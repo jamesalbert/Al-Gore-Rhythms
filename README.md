@@ -1,3 +1,15 @@
 # Al-Gore-Rhythms
 
-![](http://i213.photobucket.com/albums/cc137/ScriptOhio/al_gore-13022.jpg)
+![](https://cdn.meme.am/instances/250x250/72540017.jpg)
+
+
+### INSTALL
+
+```
+virtualenv venv
+git clone https://github.com/jamesalbert/Al-Gore-Rhythms
+python setup.py install
+# check to see if it installed correctly
+python
+>>> from algore.graphing import Dijkstra
+```
