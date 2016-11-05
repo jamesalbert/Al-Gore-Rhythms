@@ -19,5 +19,7 @@ setup(name='Al-Gore-Rhythms',
                         'networkx',
                         'numpy',
                         'pyparsing',
-                        'six']
+                        'six'],
+      setup_requires=['pytest-runner'],
+      tests_require=['pytest', 'pytest-cov']
 )

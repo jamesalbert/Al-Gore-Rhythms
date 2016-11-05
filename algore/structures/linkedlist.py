@@ -31,14 +31,11 @@ class DoublyLinkedList(object):
         return self
 
     def pop(self, index=0):
+        if index + 1 > len(self):
+            raise IndexError('index {0} out of range'.format(index))
         node = None
-        if index < len(self) / 2:
-            node = self.root
-            attr = 'next'
-        else:
-            node = self.tail
-            attr = 'prev'
-            index += 1
+        node = self.root
+        attr = 'next'
         for i in range(index):
             node = getattr(node, attr)
         if node is self.root:
@@ -48,10 +45,12 @@ class DoublyLinkedList(object):
         node.next.prev = node.prev
         node.prev.next = node.next
         self.len -= 1
-        return node
+        return node.value
 
     def reverse(self):
         ll = DoublyLinkedList()
+        if len(self) is 0:
+            return ll
         node = self.tail
         while True:
             ll.insert(node.value)
@@ -62,18 +61,18 @@ class DoublyLinkedList(object):
 
     def printf(self, node):
         if node.value == self.tail.value:
-            return node.value
-        return ','.join([node.value, self.printf(node.next)])
+            return str(node.value)
+        return ','.join([str(node.value), self.printf(node.next)])
 
     def __str__(self):
-        return self.printf(self.root)
+        return '[{0}]'.format(self.printf(self.root))
 
     def __len__(self):
         return self.len
 
     def __getitem__(self, index):
         if index >= len(self):
-            raise Exception('index {0} out of range'.format(index))
+            raise IndexError('index {0} out of range'.format(index))
         for i in range(index):
             self.iter = self.iter.next
         item = self.iter.value

@@ -1,3 +1,10 @@
 **/__pycache__
 **/*.pyc
 venv
+.coverage
+htmlcov
+.cache
+Al_Gore_Rhythms.egg-info
+.eggs
+build
+dist
