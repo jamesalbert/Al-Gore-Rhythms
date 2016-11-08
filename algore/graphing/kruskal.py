@@ -13,7 +13,7 @@ class Kruskal(MinimumSpanning):
         vertex = self.graph[current]
         edges = [edge for edge in vertex.edges.values() if edge in t]
         current = min(edges, key=lambda edge: edge.weight).destination.name
-        return current + self.get_path(t, current)
+        return '->'.join([current, self.get_path(t, current)])
 
     def find_path(self):
         q = self.graph.get_edges()
